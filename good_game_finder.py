@@ -155,6 +155,7 @@ def main():
 
     send_email(private_info["Email"], private_info["Recipient List"],
               "Good NBA Games Today", message,
-              private_info["Email"], private_info["Email Pass"])
+              private_info["Email"], private_info["Password"])
+
 
 main()
