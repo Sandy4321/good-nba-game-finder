@@ -9,6 +9,7 @@ from team_obj import Team
 
 west_threshold = 11
 east_threshold = 6
+
 my_team = [ {"name": "John Wall", "team": "Wizards"},
         {"name": "Jonas Valanciunas", "team": "Raptors"}, 
         {"name": "Kawhi Leonard", "team": "Spurs"},
@@ -107,6 +108,6 @@ def main():
 
     # returns a list of the good games and activ
     # players in a nice format
-    message_body = list_games(good_games) + list_players(active_players)
+    message_body = list_games(good_games)
     return message_body
 

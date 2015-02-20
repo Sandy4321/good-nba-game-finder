@@ -23,18 +23,22 @@ def send_email(from_addr, to_addr_list,
 
 # controls what is in the body of the email, and to whom it is sent
 # based on command line args
-def execution_ctrl_message(message):
+def execution_ctrl_message():
     arg = str(sys.argv[1])
 
     if arg == "custom":
         return input_handler.take_str_input("Enter custom message: ")
-
-    return message
+    
+    elif arg == "fantasy":
+        return core.main() + core.list_players(core.my_team)
+    
+    else:
+        return core.main()
 
 def execution_ctrl_to_send():
     arg = str(sys.argv[2])
     info_list = core.load_private_info()
-
+    print info_list
     if arg == "me":
         return info_list["Email"]
 
@@ -48,8 +52,7 @@ def execution_ctrl_to_send():
 def main():
     
     # controls who the information will be sent to based on command line args
-    message = core.main()
-    message = execution_ctrl_message(message)
+    message = execution_ctrl_message()
     to_send = execution_ctrl_to_send()
 
     # sends an email to specified recipients containing a list
@@ -57,5 +60,5 @@ def main():
     send_info = core.load_private_info()
     send_email(send_info["Email"],
                to_send, "NBA Daily",
-               message, to_send, send_info["Password"])
+               message, send_info["Email"], send_info["Password"])
 main()
