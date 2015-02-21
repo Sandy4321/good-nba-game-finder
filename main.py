@@ -38,7 +38,6 @@ def execution_ctrl_message():
 def execution_ctrl_to_send():
     arg = str(sys.argv[2])
     info_list = core.load_private_info()
-    print info_list
     if arg == "me":
         return info_list["Email"]
 
